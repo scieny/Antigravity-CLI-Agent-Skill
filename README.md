@@ -1,6 +1,6 @@
 # Antigravity CLI Agent Skill
 
-一个用于集成 **Antigravity AI 编码助手 (`agy`)** 的插件与技能仓库。它提供了两个主要组件，使用户和智能体（Agent）能够以完全自动化的方式利用 Antigravity AI 的超强能力执行复杂的代码生成、修改、调试和分析任务：
+一个用于集成 **Antigravity CLI (`agy`)** 的插件与技能仓库。它提供了两个主要组件，使用户和智能体（Agent）能够以完全自动化的方式利用 Antigravity CLI 的超强能力执行复杂的代码生成、修改、调试和分析任务：
 
 - 🤖 **`openclaw-antigravity/`**: 为 **OpenClaw Agent** 深度定制的技能定义，让 Agent 能够使用 `agy` 命令行工具安全、顺畅地操作文件。
 - ⚙️ **`hermes-antigravity/`**: 为 **Hermes Agent** 提供的自定义工具插件，利用 Python 子进程封装与注册 `invoke_antigravity` 工具。
