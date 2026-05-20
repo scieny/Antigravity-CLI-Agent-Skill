@@ -1,0 +1,4 @@
+name: hermes-antigravity
+version: 1.0.0
+description: A custom tool plugin that enables Hermes Agent to invoke the Antigravity AI coding assistant (agy) for advanced software development tasks.
+kind: tool
