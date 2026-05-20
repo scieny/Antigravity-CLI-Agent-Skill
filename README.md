@@ -11,25 +11,49 @@
 
 Antigravity CLI (简称 `agy`) 作为底层强大的 AI 编码引擎，可以通过命令行（CLI）非交互式地接收任务。以下是 Agent 侧集成该工具的工作流：
 
-```mermaid
-graph TD
-    A[用户请求 Task] --> B{选择 Agent 框架}
-    B -- OpenClaw --> C[调用 call-antigravity 技能]
-    B -- Hermes --> D[使用 invoke_antigravity 工具]
-    
-    C --> E[Shell 执行 agy 命令]
-    D --> F[Python 执行 subprocess.run]
-    
-    E --> G[Antigravity CLI (agy)]
-    F --> G
-    
-    G --> H[--dangerously-skip-permissions]
-    G --> I[--print '提示词']
-    
-    H & I --> J[执行代码修改/分析/生成]
-    J --> K[返回标准 Markdown 响应]
-    K --> L[Agent 解析响应并同步工作区]
+```text
+               ┌──────────────────────┐
+               │    用户请求 Task     │
+               └──────────┬───────────┘
+                          │
+                  ┌───────┴───────┐
+                  ▼               ▼
+            【OpenClaw】       【Hermes】
+                  │               │
+            调用技能        使用自定义工具
+       call-antigravity   invoke_antigravity
+                  │               │
+                  ▼               ▼
+            Shell 执行       Python 执行
+             agy 命令      subprocess.run
+                  │               │
+                  └───────┬───────┘
+                          │
+                          ▼
+            ┌───────────────────────────┐
+            │   Antigravity CLI (agy)   │
+            │                           │
+            │  携带以下关键参数标志：  │
+            │  • --dangerously-skip...  │
+            │  • --print "提示词"       │
+            └─────────────┬─────────────┘
+                          │
+                          ▼
+            ┌───────────────────────────┐
+            │   执行代码修改/分析/生成   │
+            └─────────────┬─────────────┘
+                          │
+                          ▼
+            ┌───────────────────────────┐
+            │    返回标准 Markdown 结果   │
+            └─────────────┬─────────────┘
+                          │
+                          ▼
+            ┌───────────────────────────┐
+            │   Agent 自动同步并理解变更 │
+            └───────────────────────────┘
 ```
+
 
 ---
 
